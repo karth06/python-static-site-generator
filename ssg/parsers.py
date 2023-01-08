@@ -4,7 +4,7 @@ import shutil
 
 
 class Parser:
-    extensions = List[str]
+    extensions:List[str] = []
 
     def parse(self, path: Path, source: Path, dest: Path):
         raise NotImplementedError
@@ -20,6 +20,10 @@ class Parser:
 
     def copy(self, path, source, dest):
         shutil.copy2(path, dest / path.relative_path(source))
+
+    def valid_extension(self,extension):
+        return extension in self.extensions
+
 
 
 class ResourceParser(Parser):
