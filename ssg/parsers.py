@@ -19,7 +19,7 @@ class Parser:
             file.write(content)
 
     def copy(self, path, source, dest):
-        shutil.copy2(path, dest / path.relative_path(source))
+        shutil.copy2(path, dest / path.relative_to(source))
 
     def valid_extension(self,extension):
         return extension in self.extensions
